@@ -1,25 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Social Card Generator — HTML-in-Canvas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="manifest" href="manifest.json"/>
-    <title>Progressive Web Aapp Template</title>
   </head>
   <body>
-    <h1>Progrssive Web App (PWA) Template</h1>
-    <h2>What is a Progressive Web App ?</h2>
-    A Progressive Web App is a web app that delivers an app-like experience to users by using modern web capabilities. In the end, it's just your regular website that runs in a browser with some enhancements. It gives you the ability:
-    <p>Progressive web apps are a way to bring that native app feeling to a traditional web app. With PWAs we can enhance our website with mobile app features which increase usability and offer a great user experience.</p>
-    
-    <ul>
-        <li>To install it on a mobile home screen</li>
-        <li>To access it when offline</li>
-        <li>To access the camera</li>
-        <li>To get push notifications</li>
-        <li>To do background synchronization</li>
-    </ul>
+    <div class="stage">
+      <canvas id="canvas" width="300" height="878" layoutsubtree="" content="drawable" aria-label="Social card preview">
+        <div id="card" drawable="" style="--gradient-start: #6c41f0; --gradient-end: #00e5b9; --gradient-angle: 0deg;">
+          <div class="deco deco-1"></div>
+          <div class="deco deco-2"></div>
+          <div class="deco deco-3"></div>
+          <div class="deco deco-4"></div>
+          <div class="card-content">
+            <!--<span class="card-tag" id="card-tag">killerrcodes/span>-->
+            <h2 class="card-title" id="card-title" style="--gradient-start: #6c41f0; --gradient-end: #00e5b9; --gradient-angle: 0deg;">“Write Quote here”</h2>
+            <p class="card-desc" id="card-desc">"Write sub quote here.."</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <span class="avatar" id="card-avatar">?</span>
+                <span class="author-name" id="card-author-name">Anon</span>
+              </div>
+              <span class="card-domain" id="card-domain">_killercodes</span>
+            </div>
+          </div>
+        </div>
+      </canvas>
+
+      <div class="controls">
+        <div class="control control-wide">
+          <label for="input-title">Title</label>
+          <input type="text" id="input-title" value="Write Quote here.">
+        </div>
+        <div class="control control-wide">
+          <label for="input-desc">Description</label>
+          <input type="text" id="input-desc" value="Write sub quote here..">
+        </div>
+        <div class="control control-wide">
+          <label for="input-author">Author</label>
+          <input type="text" id="input-author" value="Anon">
+        </div>
+        <div class="control">
+          <span class="control-group-label" id="gradient-group-label">Background</span>
+          <div class="swatches" role="group" aria-labelledby="gradient-group-label">
+            <input type="color" id="input-color1" value="#6c41f0" aria-label="Gradient start color">
+            <input type="color" id="input-color2" value="#00e5b9" aria-label="Gradient end color">
+            <input type="range" id="input-angle" min="0" max="360" value="135" aria-label="Gradient angle in degrees">
+          </div>
+        </div>
+        <div class="control">
+          <span class="control-group-label" id="gradient-group-label">Foreground</span>
+          <div class="swatches" role="group" aria-labelledby="gradient-group-label">
+            <input type="color" id="input-font-color1" value="#ffffff" aria-label="Gradient start color">
+            <input type="color" id="input-font-color2" value="#00e5b9" aria-label="Gradient end color">
+            <input type="range" id="input-font-angle" min="0" max="360" value="135" aria-label="Gradient angle in degrees">
+          </div>
+        </div>
+        <div class="control">
+          <label for="input-width">Width</label>
+          <div class="swatches">
+            <input type="range" id="input-width" min="200" max="1920" value="720" aria-label="Canvas width in pixels">
+          </div>
+        </div>
+        <div class="control">
+          <label for="input-height">Height</label>
+          <div class="swatches">
+            <input type="range" id="input-height" min="200" max="1080" value="378" aria-label="Canvas height in pixels">
+          </div>
+        </div>
+        <div class="actions">
+          <select id="input-format" aria-label="Export image format">
+            <option value="image/png">PNG</option>
+            <option value="image/jpeg">JPEG</option>
+          </select>
+          <input type="range" id="input-quality" min="10" max="100" step="5" value="92" hidden="">
+          <span class="quality-display" id="quality-value" hidden="">92%</span>
+          <button id="btn-download" type="button">Download</button>
+        </div>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
