@@ -1,6 +1,6 @@
 {
-    "name": "PWA Template",
-    "short_name": "PwaTemplate",
+    "name": "Quote Generator",
+    "short_name": "QuoteGen",
     "start_url": "index.html",
     "display": "standalone",
     "background_color": "#fdfdfd",
